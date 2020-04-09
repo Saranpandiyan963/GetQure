@@ -1,6 +1,8 @@
 package app.saran.getqure;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,27 +11,37 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
-    private FirebaseAuth mAuth;
-    private Button signout;
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter;
+
+    private List<itemView> listItems;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mAuth = FirebaseAuth.getInstance();
-      
+        recyclerView = (RecyclerView)findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        signout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mAuth.signOut();
-                startActivity(new Intent(getApplicationContext(),LoginActivity.class));
-                finish();
-            }
-        });
+        listItems = new ArrayList<>();
+
+        for (int i =0;i<=10;i++) {
+            itemView itemView = new itemView("heading" + i + 1, "asdfghj jhgdss lkmvhcg lorem");
+
+            listItems.add(itemView);
+        }
+        adapter = new MyAdapter(listItems,this);
+
+        recyclerView.setAdapter(adapter);
 
     }
 }
