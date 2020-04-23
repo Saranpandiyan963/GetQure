@@ -1,8 +1,5 @@
 package app.saran.getqure;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -27,12 +24,16 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 public class ApointmentActivity extends AppCompatActivity {
 
     private EditText patientName,age;
     private Button appoinment;
     private RadioGroup genderGroup;
     private RadioButton genderButton;
+    private String hospitalName,doctorName;
     private RequestQueue requestQueue;
 
     final String server_url  = "http://192.168.43.26/example_1.json";
@@ -42,6 +43,14 @@ public class ApointmentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apointment);
+
+        Intent intent = getIntent();
+        HospitalDetails hospital = intent.getParcelableExtra("Hospital & Doctor");
+
+        doctorName = hospital.doctor_Name;
+        hospitalName = hospital.hospital_Name;
+
+        final Patient op = new Patient(doctorName,hospitalName);
 
         patientName = (EditText)findViewById(R.id.patientName);
         age = (EditText)findViewById(R.id.age);
@@ -70,11 +79,12 @@ public class ApointmentActivity extends AppCompatActivity {
                     return;
                 }
 
-                Patient op = new Patient(Name,ag,Sex);
+                op.setPatientName(Name);
+                op.setGender(Sex);
+                op.setAge(ag);
                 Gson gson = new Gson();
                 String opJson = gson.toJson(op);
                 System.out.println(opJson);
-
                 Submit(opJson);
 
             }

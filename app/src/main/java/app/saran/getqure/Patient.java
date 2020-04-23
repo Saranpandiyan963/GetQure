@@ -5,7 +5,7 @@ public class Patient {
     private String patientName;
     private int age;
     private String gender;
-    private String patientId;
+    private String doctorName;
     private  String apointed_hospital;
 
 
@@ -19,8 +19,8 @@ public class Patient {
         this.gender = gender;
     }
 
-    public Patient(String patientId,String apointed_hospital){
-        this.patientId = patientId;
+    public Patient(String doctorName,String apointed_hospital){
+        this.doctorName = doctorName;
         this.apointed_hospital= apointed_hospital;
     }
 
@@ -36,12 +36,12 @@ public class Patient {
         return age;
     }
 
-    public String getPatientId() {
-        return patientId;
+    public String getDoctorName() {
+        return doctorName;
     }
 
-    public void setPatientId(String patientId) {
-        this.patientId = patientId;
+    public void setDoctorName(String doctorName) {
+        this.doctorName = doctorName;
     }
 
     public String getApointed_hospital() {

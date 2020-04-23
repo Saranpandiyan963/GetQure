@@ -1,9 +1,5 @@
 package app.saran.getqure;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -22,6 +18,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -54,8 +53,9 @@ public class RegisterActivity extends AppCompatActivity {
         final String TAG = "testcase";
 
         if (mAuth.getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(),MainActivity.class));
             finish();
+            startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+
         }
 
         register.setOnClickListener(new View.OnClickListener() {
@@ -94,6 +94,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     Toast.makeText(RegisterActivity.this,"VERIFICATION EMAIL SENT",Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(getApplicationContext(),MainUser.class));
 
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
@@ -104,8 +105,8 @@ public class RegisterActivity extends AppCompatActivity {
                                 }
                             });
 
-                            Toast.makeText(RegisterActivity.this,"user created",Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                            Toast.makeText(RegisterActivity.this,"created",Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(),OPTicket.class));
                             Log.i(TAG,"done");
                             finish();
                         }
