@@ -50,6 +50,7 @@ public class HospitalDetails implements Parcelable {
     }
 
     public static ArrayList<HospitalDetails> createHospitalDetail(int numOfHospital){
+
         ArrayList<HospitalDetails> hospital = new ArrayList<HospitalDetails>();
 
         for(int i = 0;i<12;i++)

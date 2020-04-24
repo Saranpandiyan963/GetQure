@@ -21,7 +21,8 @@ public class MainUser extends AppCompatActivity implements HospitalDetailAdapter
 
         RecyclerView rvHospital = (RecyclerView)findViewById(R.id.Recyle);
 
-        Hospitals =HospitalDetails.createHospitalDetail(15);
+        BackTask backTask = new BackTask(MainUser.this);
+        Hospitals =backTask.getData();
         HospitalDetailAdapter hdAdapter = new HospitalDetailAdapter(Hospitals,this);
         rvHospital.setAdapter(hdAdapter);
         rvHospital.setLayoutManager(new LinearLayoutManager(this));
