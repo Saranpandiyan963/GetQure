@@ -2,7 +2,6 @@ package app.saran.getqure;
 
 import android.content.Context;
 import android.widget.Toast;
-
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -18,7 +17,7 @@ public class BackTask {
 
     Context context;
     ArrayList<HospitalDetails> arrayList = new ArrayList<>();
-    final String jsonUrl = "http://192.168.43.26/example_1.json";
+    final String jsonUrl = "http://192.168.43.26/example_4.json";
 
     public BackTask(Context context) {
         this.context = context;
@@ -30,7 +29,7 @@ public class BackTask {
             @Override
             public void onResponse(JSONArray response) {
                 int count = 0;
-                System.out.println(response.length());
+                System.out.println("hello" + response.length());
                 int x = response.length();
                 while(count<x){
                     try {
@@ -50,10 +49,8 @@ public class BackTask {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
-                Toast.makeText(context,"error===",Toast.LENGTH_LONG).show();
+                Toast.makeText(context,error.toString() ,Toast.LENGTH_LONG).show();
                 error.printStackTrace();
-
             }
         });
 

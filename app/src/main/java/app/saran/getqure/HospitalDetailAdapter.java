@@ -16,9 +16,9 @@ public class HospitalDetailAdapter extends RecyclerView.Adapter<HospitalDetailAd
     private List mHospital;
     public OnNoteClickListener monNoteClickListener;
 
-    public HospitalDetailAdapter(List hospital,OnNoteClickListener monNoteClickListener) {
+    public HospitalDetailAdapter(List hospital,OnNoteClickListener onNoteClickListener) {
         mHospital = hospital;
-        this.monNoteClickListener = monNoteClickListener;
+        this.monNoteClickListener = onNoteClickListener;
     }
 
     @NonNull

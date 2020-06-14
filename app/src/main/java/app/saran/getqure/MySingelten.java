@@ -10,7 +10,7 @@ import com.android.volley.toolbox.Volley;
 public class MySingelten
 {
     private static MySingelten mInstance;
-    private RequestQueue requestQueue;
+    private RequestQueue requestQueue; 
     private static Context cntxt;
 
     public MySingelten(Context context){

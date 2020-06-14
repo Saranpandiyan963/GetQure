@@ -17,7 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class OPTicket extends AppCompatActivity {
 
     private TextView patientname,Time,hospital,id;
-    private final String server ="http://192.168.43.26/example_1.php";
+    private final String server ="http://192.168.43.26/example_4.json";
 
 
     @Override
